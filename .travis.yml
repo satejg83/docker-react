@@ -1,0 +1,10 @@
+language: generic
+sudo : required
+services:
+  - docker
+
+before_install:
+  - docker build -t satejgujar/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true satejgujar/docker-react npm run test -- --coverage
